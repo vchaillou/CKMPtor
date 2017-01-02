@@ -55,20 +55,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commande.cs" />
+    <Compile Include="EtatMajor.cs" />
+    <Compile Include="InterfaceGraphique.cs" />
+    <Compile Include="JdlVFabrique.cs" />
+    <Compile Include="Observateur.cs" />
+    <Compile Include="Simulateur.cs" />
+    <Compile Include="SimulateurViewModel.cs" />
+    <Compile Include="Zone.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Accès.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FabriqueAbstraite.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objet.cs" />
+    <Compile Include="Personnage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

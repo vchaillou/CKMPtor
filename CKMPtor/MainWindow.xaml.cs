@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,12 @@ namespace CKMPtor
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SimulateurViewModel viewModel;
+
         public MainWindow()
         {
+            viewModel = new SimulateurViewModel();
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

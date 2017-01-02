@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding Simulations, Mode=OneWay}"
+                 SelectedItem="{Binding SimulationChoisie, Mode=OneWayToSource}"
+                 DisplayMemberPath="Nom"
+                 SelectedIndex="0"/>
+        <Button Grid.Row="1"
+                Content="C'est parti mon kiki !"
+                Command="{Binding CestPartiMonKiki, Mode=OneWay}"/>
     </Grid>
 </Window>
