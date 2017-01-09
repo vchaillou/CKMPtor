@@ -58,7 +58,13 @@
     <Compile Include="Commande.cs" />
     <Compile Include="EtatMajor.cs" />
     <Compile Include="InterfaceGraphique.cs" />
-    <Compile Include="JdlVFabrique.cs" />
+    <Compile Include="JeuDeLaVie\Cellule.cs" />
+    <Compile Include="JeuDeLaVie\EtatCellule.cs" />
+    <Compile Include="JeuDeLaVie\Case.cs" />
+    <Compile Include="JeuDeLaVie\InterfaceGraphiqueJeuDeLaVie.cs" />
+    <Compile Include="JeuDeLaVie\JdlVFabrique.cs" />
+    <Compile Include="JeuDeLaVie\StrategieCellule.cs" />
+    <Compile Include="JeuDeLaVie\Veine.cs" />
     <Compile Include="Observateur.cs" />
     <Compile Include="Simulateur.cs" />
     <Compile Include="SimulateurViewModel.cs" />

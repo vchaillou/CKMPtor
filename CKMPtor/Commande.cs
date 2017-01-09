@@ -18,7 +18,7 @@ namespace CKMPtor
             fonction = uneFonction;
             Exécution = uneExécution;
         }
-
+        
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)

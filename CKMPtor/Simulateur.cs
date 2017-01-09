@@ -2,62 +2,69 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CKMPtor
 {
     public class Simulateur
     {
-        private FabriqueAbstraite fabrique;
-
         private EtatMajor etatMajor;
-        private List<InterfaceGraphique> interfaces;
-        private List<Zone> zones;
-        private List<Personnage> personnages;
-        private List<Objet> objets;
-        private List<Accès> accès;
+        public List<InterfaceGraphique> Interfaces { get; }
+        public List<Zone> Zones { get; }
+        public List<Personnage> Personnages { get; }
+        public List<Objet> Objets { get; }
+        public List<Accès> Accès { get; }
 
-        public Simulateur(FabriqueAbstraite uneFabrique)
+        public Simulateur()
         {
-            interfaces = new List<InterfaceGraphique>();
-            System.Windows.MessageBox.Show("TODO : Ajout interface graphique");
+            Interfaces = new List<InterfaceGraphique>();
+            Zones = new List<Zone>();
+            Personnages = new List<Personnage>();
+            Objets = new List<Objet>();
+            Accès = new List<Accès>();
             etatMajor = new EtatMajor();
-            fabrique = uneFabrique;
         }
 
         public void MettreAJourInterface()
         {
-            foreach(InterfaceGraphique uneInterface in interfaces)
+            foreach(InterfaceGraphique uneInterface in Interfaces)
             {
                 uneInterface.Refresh();
             }
         }
 
-        public void AjouterZone()
+        public void AjouterZone(Zone uneZone)
         {
-            zones.Add(fabrique.CréerZone());
+            Zones.Add(uneZone);
         }
 
-        public void AjouterPersonnage()
+        public void AjouterPersonnage(Personnage unPersonnage)
         {
-            personnages.Add(fabrique.CréerPersonnage(etatMajor));
+            Personnages.Add(unPersonnage);
+            etatMajor.EnregistrerObservateur(unPersonnage);
         }
 
-        public void AjouterObjet()
+        public void AjouterObjet(Objet unObjet)
         {
-            objets.Add(fabrique.CréerObjet(etatMajor));
+            Objets.Add(unObjet);
+            etatMajor.EnregistrerObservateur(unObjet);
         }
 
-        public void AjouterAccès()
+        public void AjouterAccès(Accès unAccès)
         {
-            accès.Add(fabrique.CréerAccès());
+            Accès.Add(unAccès);
         }
 
         public void Play()
         {
-            // TODO => faire une boucle
-            etatMajor.DonnerLesOrdres();
-            MettreAJourInterface();
+            // TODO => Threading
+            while (true)
+            {
+                etatMajor.DonnerLesOrdres();
+                MettreAJourInterface();
+                Thread.Sleep(5000);
+            }
         }
         public void Pause()
         {

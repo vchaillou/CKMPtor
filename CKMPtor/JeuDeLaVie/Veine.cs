@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace CKMPtor
 {
-    public interface FabriqueAbstraite
+    class Veine : Accès
     {
-        string Nom { get; }
-
-        Simulateur CréerSimulateur();
+        public Veine(Zone unDébut, Zone uneFin) : base(unDébut, uneFin)
+        {
+            // Rien à faire
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace CKMPtor
+﻿using System.Linq;
+using System.Windows.Controls;
+
+namespace CKMPtor
 {
     public abstract class InterfaceGraphique
     {
