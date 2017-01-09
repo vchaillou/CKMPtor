@@ -1,0 +1,46 @@
+﻿<simulateurs>
+  <immeuble>
+    <escaliers>
+      <nombre>2</nombre>
+    </escaliers>
+
+    <personnes>
+      <nombre>30</nombre>
+    </personnes>
+
+    <etages>
+      <nombre>6</nombre>
+      <longeur>10</longeur>
+    </etages>
+  </immeuble>
+
+  <fourmiliere>
+    <fourmis>
+      <nombre>500</nombre>
+    </fourmis>
+
+    <objectif>
+      <nombre>15</nombre>
+    </objectif>
+
+    <carte>
+      <longeur>20</longeur>
+      <largeur>20</largeur>
+    </carte>
+
+    <pheromones>
+      <poids>5</poids>
+    </pheromones>
+  </fourmiliere>
+
+  <jeu-de-la-vie>
+    <cellules>
+      <vivante>150</vivante>
+    </cellules>
+
+    <carte>
+      <longeur>300</longeur>
+      <largeur>300</largeur>
+    </carte>
+  </jeu-de-la-vie>
+</simulateurs>
