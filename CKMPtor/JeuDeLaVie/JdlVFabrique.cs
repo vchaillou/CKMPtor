@@ -1,4 +1,5 @@
 ﻿using System;
+using CKMPtor.Xml;
 
 namespace CKMPtor
 {
@@ -15,15 +16,13 @@ namespace CKMPtor
         public Simulateur CréerSimulateur()
         {
             Simulateur unSimulateur = new Simulateur();
-            System.Windows.MessageBox.Show("TODO : Parsing XML");
+
+            DonnéesInitialeSimulateurs donnéesXML = DonnéesXML.Réccupérer();
 
             Random rand = new Random();
 
-            int longueur, largeur;
-
-            // A changer
-            longueur = 10;
-            largeur = 10;
+            int longueur = donnéesXML.JeuDeLaVie.Carte.Longeur;
+            int largeur = donnéesXML.JeuDeLaVie.Carte.Largeur;
 
             Case[,] cases = new Case[longueur, largeur];
 

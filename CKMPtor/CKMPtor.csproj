@@ -68,6 +68,9 @@
     <Compile Include="Observateur.cs" />
     <Compile Include="Simulateur.cs" />
     <Compile Include="SimulateurViewModel.cs" />
+    <Compile Include="Xml\DonnéesXML.cs" />
+    <Compile Include="Xml\XMLExtracteur.cs" />
+    <Compile Include="Xml\XMLStructure.cs" />
     <Compile Include="Zone.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Xml\DonnéesInitial.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
