@@ -60,12 +60,12 @@ namespace CKMPtor
         {
 
             SimulateurThread threadDeSimulateur = new SimulateurThread(() =>
-            {
+            { 
                 while (true)
                 {
+                    Thread.Sleep(500);
                     etatMajor.DonnerLesOrdres();
                     MettreAJourInterface();
-                    Thread.Sleep(500);
                 }
             });
 

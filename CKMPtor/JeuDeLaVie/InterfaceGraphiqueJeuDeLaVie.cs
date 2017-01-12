@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CKMPtor.Xml;
+using System.Collections.Generic;
 
 namespace CKMPtor
 {
@@ -26,56 +27,25 @@ namespace CKMPtor
 
         public override void Refresh()
         {
-            Application.Current.Dispatcher.Invoke(() => { 
+            Application.Current.Dispatcher.Invoke(() => {
 
-                int ligne = 0;
-                int colonne = 0;
-               
-
-                grilleDynamique.Children.Clear();
-                grilleDynamique.UpdateLayout();
+                IEnumerator<TextBlock> iterateurTextblock = grilleDynamique.Children.OfType<TextBlock>().GetEnumerator();
 
                 foreach (Case uneCase in simulation.Zones.Cast<Case>())
                 {
+                    iterateurTextblock.MoveNext();
                     var etatCellule = (uneCase.Occupant as Cellule).État;
-
-                    if (etatCellule == EtatCellule.VIVANTE)
-                    {
-                        TextBlock bookText = new TextBlock();
-                        bookText.Text = "*";
-                        Console.Write("*");
-                        bookText.FontSize = 40;
-                        bookText.FontWeight = FontWeights.Bold;
-                        Grid.SetRow(bookText, ligne);
-                        Grid.SetColumn(bookText, colonne);
-                        grilleDynamique.Children.Add(bookText);
-                        grilleDynamique.UpdateLayout();
-
-                    }
-                    else if(etatCellule == EtatCellule.MORTE)
-                    {
-                        TextBlock bookText = new TextBlock();
-                        bookText.Text = " ";
-                        Console.Write("");
-                        bookText.FontSize = 40;
-                        bookText.FontWeight = FontWeights.Bold;
-                        Grid.SetRow(bookText, ligne);
-                        Grid.SetColumn(bookText, colonne);
-                        grilleDynamique.Children.Add(bookText);
-                        grilleDynamique.UpdateLayout();
-
-                    }
+                    string marque = (etatCellule == EtatCellule.VIVANTE ? "*" : " ");
                     
-                    if (colonne < longueurLigne)
+                    TextBlock textblock = iterateurTextblock.Current;
+                    textblock.Text = marque;
+                    Console.Write(marque);
+                    
+                    if (Grid.GetColumn(textblock) == longueurLigne-1)
                     {
-                        colonne = 0;
-                        ligne++;
                         Console.WriteLine("");
                     }
-                    colonne++;
-
                 }
-                grilleDynamique.UpdateLayout();
             });
         }
 
@@ -100,6 +70,34 @@ namespace CKMPtor
             {
                 grilleDynamique.RowDefinitions.Add(new RowDefinition());
             }
+
+            // Initialisation grille
+            int ligne = 0;
+            int colonne = 0;
+
+            foreach (Case uneCase in simulation.Zones.Cast<Case>())
+            {
+                var etatCellule = (uneCase.Occupant as Cellule).État;
+
+                string marque = (etatCellule == EtatCellule.VIVANTE ? "*" : " ");
+
+                TextBlock bookText = new TextBlock();
+                bookText.FontSize = 40;
+                bookText.FontWeight = FontWeights.Bold;
+                Grid.SetRow(bookText, ligne);
+                Grid.SetColumn(bookText, colonne);
+                grilleDynamique.Children.Add(bookText);
+
+                colonne++;
+                if (colonne >= longueurLigne)
+                {
+                    colonne = 0;
+                    ligne++;
+                }
+            }
+
+            Refresh();
+
             fenetre.Content = grilleDynamique;
         }
     }
