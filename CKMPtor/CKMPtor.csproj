@@ -67,6 +67,7 @@
     <Compile Include="JeuDeLaVie\Veine.cs" />
     <Compile Include="Observateur.cs" />
     <Compile Include="Simulateur.cs" />
+    <Compile Include="SimulateurThread.cs" />
     <Compile Include="SimulateurViewModel.cs" />
     <Compile Include="Xml\DonnéesXML.cs" />
     <Compile Include="Xml\XMLExtracteur.cs" />
