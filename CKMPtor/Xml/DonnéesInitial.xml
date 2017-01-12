@@ -40,8 +40,8 @@
     </cellules>
 
     <carte>
-      <longeur>10</longeur>
-      <largeur>10</largeur>
+      <longeur>20</longeur>
+      <largeur>20</largeur>
     </carte>
   </jeu-de-la-vie>
 </simulateurs>
