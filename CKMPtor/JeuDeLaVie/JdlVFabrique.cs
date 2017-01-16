@@ -46,13 +46,6 @@ namespace CKMPtor
                 }
             }
 
-            // TODO
-            if (unSimulateur.Personnages.Count < 150)
-            {
-                // choisir case random
-                // ajouter cellules vivantes
-            }
-
             unSimulateur.Interfaces.Add(new InterfaceGraphiqueJeuDeLaVie(unSimulateur, longueur));
             unSimulateur.Play();
             return unSimulateur;

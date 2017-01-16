@@ -19,7 +19,8 @@ namespace CKMPtor
             CestPartiMonKiki = new Commande(lancerSimulation);
             Simulations = new ObservableCollection<FabriqueAbstraite>()
             {
-                new JdlVFabrique()
+                new JdlVFabrique(),
+                new FourmiliereFabrique()
             };
         }
 

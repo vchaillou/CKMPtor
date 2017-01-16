@@ -57,6 +57,19 @@
     </ApplicationDefinition>
     <Compile Include="Commande.cs" />
     <Compile Include="EtatMajor.cs" />
+    <Compile Include="Fourmiliere\DéplacementAller.cs" />
+    <Compile Include="Fourmiliere\DéplacementRetour.cs" />
+    <Compile Include="Fourmiliere\EtatDehors.cs" />
+    <Compile Include="Fourmiliere\EtatFourmi.cs" />
+    <Compile Include="Fourmiliere\EtatRentrée.cs" />
+    <Compile Include="Fourmiliere\Fourmi.cs" />
+    <Compile Include="Fourmiliere\FourmiliereFabrique.cs" />
+    <Compile Include="Fourmiliere\Objectif.cs" />
+    <Compile Include="Fourmiliere\Parcelle.cs" />
+    <Compile Include="Fourmiliere\Fourmiliere.cs" />
+    <Compile Include="Fourmiliere\Pheromone.cs" />
+    <Compile Include="Fourmiliere\StrategieDeplacement.cs" />
+    <Compile Include="Fourmiliere\Tunnel.cs" />
     <Compile Include="InterfaceGraphique.cs" />
     <Compile Include="JeuDeLaVie\Cellule.cs" />
     <Compile Include="JeuDeLaVie\EtatCellule.cs" />
@@ -119,6 +132,7 @@
   <ItemGroup>
     <Resource Include="Xml\DonnéesInitial.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
