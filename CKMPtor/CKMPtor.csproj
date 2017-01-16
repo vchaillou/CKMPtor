@@ -80,6 +80,7 @@
     <Compile Include="JeuDeLaVie\Veine.cs" />
     <Compile Include="Observateur.cs" />
     <Compile Include="Simulateur.cs" />
+    <Compile Include="SimulateurThread.cs" />
     <Compile Include="SimulateurViewModel.cs" />
     <Compile Include="Xml\DonnéesXML.cs" />
     <Compile Include="Xml\XMLExtracteur.cs" />
@@ -132,7 +133,10 @@
   <ItemGroup>
     <Resource Include="Xml\DonnéesInitial.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="JeuDeLaVie\Images\cellule_morte.png" />
+    <Resource Include="JeuDeLaVie\Images\cellule_vivante.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

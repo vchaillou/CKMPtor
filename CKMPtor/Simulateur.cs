@@ -58,13 +58,19 @@ namespace CKMPtor
 
         public void Play()
         {
-            // TODO => Threading
-            while (true)
-            {
-                etatMajor.DonnerLesOrdres();
-                MettreAJourInterface();
-                Thread.Sleep(5000);
-            }
+
+            SimulateurThread threadDeSimulateur = new SimulateurThread(() =>
+            { 
+                while (true)
+                {
+                    Thread.Sleep(500);
+                    etatMajor.DonnerLesOrdres();
+                    MettreAJourInterface();
+                }
+            });
+
+            threadDeSimulateur.Lancer();
+
         }
         public void Pause()
         {
