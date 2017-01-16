@@ -8,19 +8,26 @@ namespace CKMPtor
 {
     class Fourmiliere : Objet
     {
-        private int nombreFourmis;
+        private Simulateur simulateur;
+        private Parcelle parcelle; // Parcelle de départ
 
         public override void JouerTour()
         {
-            while (nombreFourmis > 0)
+            foreach (Fourmi uneFourmi in simulateur.Personnages.Cast<Fourmi>())
             {
-                System.Windows.MessageBox.Show("TODO : Ajout fourmi");
+                if (uneFourmi.Position == null) uneFourmi.Position = parcelle;
+                if (uneFourmi.Position == parcelle)
+                {
+                    uneFourmi.Strategie = DéplacementAller.GetInstance;
+                    uneFourmi.Etat = EtatDehors.GetInstance;
+                }
             }
         }
 
-        public Fourmiliere(int unNombreFourmis)
+        public Fourmiliere(Simulateur unSimulateur, Parcelle uneParcelle)
         {
-            nombreFourmis = unNombreFourmis;
+            simulateur = unSimulateur;
+            parcelle = uneParcelle;
         }
     }
 }

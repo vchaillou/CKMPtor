@@ -1,23 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using CKMPtor.Xml;
-using System.Collections.Generic;
 
 namespace CKMPtor
 {
-    internal class InterfaceGraphiqueJeuDeLaVie : InterfaceGraphique
+    class InterfaceGraphiqueFourmiliere : InterfaceGraphique
     {
         private readonly int longueurLigne;
         private Window fenetre = new Window();
         private Grid grilleDynamique = new Grid();
 
 
-        public InterfaceGraphiqueJeuDeLaVie(Simulateur unSimulateur, int uneLongueurLigne) : base(unSimulateur)
+        public InterfaceGraphiqueFourmiliere(Simulateur unSimulateur, int uneLongueurLigne) : base(unSimulateur)
         {
             longueurLigne = uneLongueurLigne;
             Application.Current.Dispatcher.Invoke(CreationDeLaFenetre);
@@ -31,17 +31,40 @@ namespace CKMPtor
 
                 IEnumerator<TextBlock> iterateurTextblock = grilleDynamique.Children.OfType<TextBlock>().GetEnumerator();
 
-                foreach (Case uneCase in simulation.Zones.Cast<Case>())
+                foreach (Parcelle uneCase in simulation.Zones.Cast<Parcelle>())
                 {
                     iterateurTextblock.MoveNext();
-                    var etatCellule = (uneCase.Occupant as Cellule).État;
-                    string marque = (etatCellule == EtatCellule.VIVANTE ? "¤" : " ");
-                    
+                    Objet objet = uneCase.PrendreObjet();
+
+                    string marque = " ";
+                    if (objet is Pheromone)
+                    {
+                        marque = "-";
+                    }
+
+                    if (uneCase.Occupant != null)
+                    {
+                        EtatFourmi etatCellule = (uneCase.Occupant as Fourmi).Etat;
+                        if (etatCellule == EtatDehors.GetInstance)
+                        {
+                            marque = "∞";
+                        }
+                    }
+
+                    if (objet is Fourmiliere)
+                    {
+                        marque = "ʍ";
+                    }
+                    if (objet is Objectif)
+                    {
+                        marque = "O";
+                    }
+
                     TextBlock textblock = iterateurTextblock.Current;
                     textblock.Text = marque;
                     Console.Write(marque);
-                    
-                    if (Grid.GetColumn(textblock) == longueurLigne-1)
+
+                    if (Grid.GetColumn(textblock) == longueurLigne - 1)
                     {
                         Console.WriteLine("");
                     }
@@ -55,18 +78,18 @@ namespace CKMPtor
                 throw new Exception("Aucune fenêtre instancié.");
 
             var DonnéesXml = DonnéesXML.Réccupérer();
-            
+
             grilleDynamique.HorizontalAlignment = HorizontalAlignment.Stretch;
             grilleDynamique.VerticalAlignment = VerticalAlignment.Stretch;
             grilleDynamique.ShowGridLines = true;
-            grilleDynamique.Background = new SolidColorBrush(Color.FromArgb(255,255,222,240));
+            grilleDynamique.Background = new SolidColorBrush(Color.FromArgb(255, 240, 203, 128));
 
-            for (int i = 0; i < DonnéesXml.JeuDeLaVie.Carte.Largeur; i++)
+            for (int i = 0; i < DonnéesXml.Fourmiliere.Carte.Largeur; i++)
             {
                 grilleDynamique.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            for (int i = 0; i < DonnéesXml.JeuDeLaVie.Carte.Longeur; i++)
+            for (int i = 0; i < DonnéesXml.Fourmiliere.Carte.Longeur; i++)
             {
                 grilleDynamique.RowDefinitions.Add(new RowDefinition());
             }
@@ -75,7 +98,7 @@ namespace CKMPtor
             int ligne = 0;
             int colonne = 0;
 
-            foreach (Case uneCase in simulation.Zones.Cast<Case>())
+            foreach (Parcelle uneCase in simulation.Zones.Cast<Parcelle>())
             {
                 TextBlock bookText = new TextBlock();
                 bookText.FontSize = 40;

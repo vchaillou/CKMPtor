@@ -64,6 +64,7 @@
     <Compile Include="Fourmiliere\EtatRentrée.cs" />
     <Compile Include="Fourmiliere\Fourmi.cs" />
     <Compile Include="Fourmiliere\FourmiliereFabrique.cs" />
+    <Compile Include="Fourmiliere\InterfaceGraphiqueFourmiliere.cs" />
     <Compile Include="Fourmiliere\Objectif.cs" />
     <Compile Include="Fourmiliere\Parcelle.cs" />
     <Compile Include="Fourmiliere\Fourmiliere.cs" />

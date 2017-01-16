@@ -27,11 +27,13 @@ namespace CKMPtor
 
         public void DonnerLesOrdres()
         {
-            foreach (Personnage personnage in observateurs.OfType<Personnage>())
+            List<Observateur> desObservateurs = observateurs.ToList();
+
+            foreach (Personnage personnage in desObservateurs.OfType<Personnage>())
             {
                 personnage.AnalyseSituation();
             }
-            foreach(Observateur observateur in observateurs)
+            foreach(Observateur observateur in desObservateurs)
             {
                 observateur.JouerTour();
             }

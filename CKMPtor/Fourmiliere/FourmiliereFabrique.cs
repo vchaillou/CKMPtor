@@ -15,7 +15,7 @@ namespace CKMPtor
         {
             Simulateur unSimulateur = new Simulateur();
 
-            /*DonnéesInitialeSimulateurs donnéesXML = DonnéesXML.Réccupérer();
+            DonnéesInitialeSimulateurs donnéesXML = DonnéesXML.Réccupérer();
 
             Random rand = new Random();
 
@@ -29,8 +29,8 @@ namespace CKMPtor
             {
                 for (int j = 0; j < largeur; j++)
                 {
+                    parcelles[i, j] = new Parcelle(unSimulateur);
                     unSimulateur.AjouterZone(parcelles[i, j]);
-                    unSimulateur.AjouterPersonnage(parcelles[i, j].Occupant);
 
                     if (i > 0)
                     {
@@ -44,7 +44,13 @@ namespace CKMPtor
                 }
             }
 
-            (unSimulateur.Zones[rand.Next(0, unSimulateur.Zones.Count)] as Parcelle).AjouterObjet(new Fourmiliere(donnéesXML.Fourmiliere.Fourmis.Nombre));
+            Parcelle uneParcelleDeDépart = (unSimulateur.Zones[rand.Next(0, unSimulateur.Zones.Count)] as Parcelle);
+            uneParcelleDeDépart.AjouterObjet(new Fourmiliere(unSimulateur, uneParcelleDeDépart));
+            
+            for (i = 0; i < donnéesXML.Fourmiliere.Fourmis.Nombre; i++)
+            {
+                unSimulateur.AjouterPersonnage(new Fourmi(donnéesXML.Fourmiliere.Pheromones.Poids));
+            }
 
             i = 0;
             while (i < donnéesXML.Fourmiliere.Objectif.Nombre)
@@ -53,13 +59,13 @@ namespace CKMPtor
 
                 if (uneParcelle.estVide())
                 {
-                    uneParcelle.AjouterObjet(new Pheromone(donnéesXML.Fourmiliere.Pheromones.Poids));
+                    uneParcelle.AjouterObjet(new Objectif(donnéesXML.Fourmiliere.Pheromones.Poids));
                     i++;
                 }
             }
 
-            unSimulateur.Interfaces.Add(new FourmiliereInterfaceGraphique(unSimulateur, longueur));
-            unSimulateur.Play();*/
+            unSimulateur.Interfaces.Add(new InterfaceGraphiqueFourmiliere(unSimulateur, largeur));
+            unSimulateur.Play();
 
             return unSimulateur;
         }

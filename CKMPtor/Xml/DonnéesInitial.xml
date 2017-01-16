@@ -17,11 +17,11 @@
 
   <fourmiliere>
     <fourmis>
-      <nombre>500</nombre>
+      <nombre>1</nombre>
     </fourmis>
 
     <objectif>
-      <nombre>15</nombre>
+      <nombre>150</nombre>
     </objectif>
 
     <carte>
@@ -41,7 +41,7 @@
 
     <carte>
       <longeur>20</longeur>
-      <largeur>20</largeur>
+      <largeur>30</largeur>
     </carte>
   </jeu-de-la-vie>
 </simulateurs>

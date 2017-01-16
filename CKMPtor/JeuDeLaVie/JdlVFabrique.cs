@@ -46,7 +46,7 @@ namespace CKMPtor
                 }
             }
 
-            unSimulateur.Interfaces.Add(new InterfaceGraphiqueJeuDeLaVie(unSimulateur, longueur));
+            unSimulateur.Interfaces.Add(new InterfaceGraphiqueJeuDeLaVie(unSimulateur, largeur));
             unSimulateur.Play();
             return unSimulateur;
         }
